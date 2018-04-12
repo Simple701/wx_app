@@ -1,0 +1,38 @@
+
+<view wx:if="{{p1_show}}" class="weui-form-preview" >
+    <view class="wx-view_coWu6c" >
+        <image class="wx-image_tBcdCT"  mode="aspectFill" src="http://qty83k.creatby.com/materials/origin/e08b7f406c49e68a972a05518afe2e9a_origin.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
+    </view>
+    <view class="weui-form-preview__hd2" wx:for="{{userInfo}}" wx:key="info_id" wx:for-item="i">
+        <view class="weui-form-preview__item" >
+            <text class="weui-form-preview__label2" >{{i.info_name}}：</text>
+            <text class="weui-form-preview__value" >{{i.info_value}}</text>
+            <switch class="wx-switch_kJ6Czn"  type="switch"/>
+        </view>
+    </view>
+    <view class="weui-form-preview__btn_primary" >
+        <button type="primary" bindtap="to_infochange"> 编辑 </button>
+    </view>
+</view>
+<view wx:if="{{p2_show}}" class="weui-form-preview" >
+
+      <navigator open-type="navigateBack" >编辑模式</navigator>
+    <view class="weui-form-preview__hd2" wx:for="{{userInfo}}" wx:key="info_id" wx:for-item="i">
+        <form bindsubmit="to_infoupdate">
+        <view class="weui-form-preview__item" >
+            <text class="weui-form-preview__label2" >{{i.info_name}}：</text>
+            <input class="" type='text' name="up_value" value="{{i.info_value}}" ></input>
+            <input hidden="true" name="up_id" value="{{i.info_id}}" ></input>
+            <button class="" size='mini' type="success" form-type="submit"> 更新 </button>
+            <button class="" size='mini' type="warn" data-id="{{i.info_id}}" bindtap="to_infodelete"> 删除 </button>
+        </view>
+        </form>
+    </view>
+    <form bindsubmit="to_infoadd">
+    <view class="weui-form-preview__btn_primary" >
+        信息名称：<input type="text" name="add_name"></input>
+        信息内容：<input type="text" name="add_value"></input>
+        <button type="success" form-type="submit"> 添加 </button>
+    </view>
+    </form>
+</view>
